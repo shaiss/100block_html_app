@@ -41,56 +41,61 @@ blocks.forEach((block) => {
   });
 });
 
-function createTagDisplayElement(name, count, color) {
-  const tagDisplayElement = document.createElement("div");
-  tagDisplayElement.classList.add("tag");
-  const tagColor = document.createElement("div");
-  tagColor.classList.add("tag-color");
+function updateTagDisplay() {
+  // clear tag display
+  tagDisplay.innerHTML = '';
+  // create tag display element for each color
+  const redBlocks = document.querySelectorAll('.red');
+  const orangeBlocks = document.querySelectorAll('.orange');
+  const yellowBlocks = document.querySelectorAll('.yellow');
+  const greenBlocks = document.querySelectorAll('.green');
+  const blueBlocks = document.querySelectorAll('.blue');
+  const indigoBlocks = document.querySelectorAll('.indigo');
+  const violetBlocks = document.querySelectorAll('.violet');
+  if (redBlocks.length > 0) {
+      createTagDisplayElement('Red', redBlocks.length, 'red', redBlocks.length * 10);
+  }
+  if (orangeBlocks.length > 0) {
+      createTagDisplayElement('Orange', orangeBlocks.length, 'orange', orangeBlocks.length * 10);
+  }
+  if (yellowBlocks.length > 0) {
+      createTagDisplayElement('Yellow', yellowBlocks.length, 'yellow', yellowBlocks.length * 10);
+  }
+  if (greenBlocks.length > 0) {
+      createTagDisplayElement('Green', greenBlocks.length, 'green', greenBlocks.length * 10);
+  }
+  if (blueBlocks.length > 0) {
+      createTagDisplayElement('Blue', blueBlocks.length, 'blue', blueBlocks.length * 10);
+  }
+  if (indigoBlocks.length > 0) {
+      createTagDisplayElement('Indigo', indigoBlocks.length, 'indigo', indigoBlocks.length * 10);
+  }
+  if (violetBlocks.length > 0) {
+      createTagDisplayElement('Violet', violetBlocks.length, 'violet', violetBlocks.length * 10);
+  }
+};
+
+function createTagDisplayElement(name, count, color, time) {
+  const tagDisplayElement = document.createElement('div');
+  tagDisplayElement.classList.add('tag');
+  const tagColor = document.createElement('div');
+  tagColor.classList.add('tag-color');
   tagColor.classList.add(color);
-  const tagName = document.createElement("div");
+  const tagName = document.createElement('div');
   tagName.innerText = name;
   tagName.classList.add(color);
-  const tagCount = document.createElement("div");
+  const tagCount = document.createElement('div');
   tagCount.innerText = count;
   tagCount.classList.add(color);
+  const tagTime = document.createElement('div');
+  tagTime.innerText = `${time} minutes`;
+  tagTime.classList.add(color);
   tagDisplayElement.appendChild(tagColor);
   tagDisplayElement.appendChild(tagName);
   tagDisplayElement.appendChild(tagCount);
+  tagDisplayElement.appendChild(tagTime);
   tagDisplay.appendChild(tagDisplayElement);
-}
-
-function updateTagDisplay() {
-  // clear tag display
-  tagDisplay.innerHTML = "";
-  // create tag display element for each color
-  const redBlocks = document.querySelectorAll(".red");
-  const orangeBlocks = document.querySelectorAll(".orange");
-  const yellowBlocks = document.querySelectorAll(".yellow");
-  const greenBlocks = document.querySelectorAll(".green");
-  const blueBlocks = document.querySelectorAll(".blue");
-  const indigoBlocks = document.querySelectorAll(".indigo");
-  const violetBlocks = document.querySelectorAll(".violet");
-  createTagDisplayElement("Red", redBlocks.length, "red");
-  createTagDisplayElement("Orange", orangeBlocks.length, "orange");
-  createTagDisplayElement("Yellow", yellowBlocks.length, "yellow");
-  createTagDisplayElement("Green", greenBlocks.length, "green");
-  createTagDisplayElement("Blue", blueBlocks.length, "blue");
-  createTagDisplayElement("Indigo", indigoBlocks.length, "indigo");
-  createTagDisplayElement("Violet", violetBlocks.length, "violet");
-  // update total time
-  const totalTime =
-    redBlocks.length * 10 +
-    orangeBlocks.length * 10 +
-    yellowBlocks.length * 10 +
-    greenBlocks.length * 10 +
-    blueBlocks.length * 10 +
-    indigoBlocks.length * 10 +
-    violetBlocks.length * 10;
-  const totalTimeElement = document.createElement("div");
-  totalTimeElement.id = "total-time";
-  totalTimeElement.innerText = `Total Time: ${totalTime} minutes`;
-  tagDisplay.appendChild(totalTimeElement);
-}
+};
 
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", function () {
