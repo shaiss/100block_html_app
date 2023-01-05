@@ -1,0 +1,64 @@
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+#block-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block {
+  width: 10%;
+  height: 10%;
+  border: 1px solid black;
+}
+
+.tag-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.tag-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.indigo {
+  background-color: indigo;
+}
+
+.violet {
+  background-color: violet;
+}
+
+#total-time {
+  margin: 5px;
+}
